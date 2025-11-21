@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header('Content-Type: application/json; charset=utf-8');
 class connect
 {  
     private $host = "localhost";
@@ -7,7 +9,6 @@ class connect
     private $pwd = "";  
     public $conn = null;
     private $result = null;
-
     // kết nối
     function connect()
     {

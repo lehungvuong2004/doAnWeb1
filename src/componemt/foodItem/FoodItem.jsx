@@ -1,0 +1,97 @@
+import foodlogo from "../../img/foodlogo.jpg";
+import bannerfoodItem from "../../img/bannerfoodItem.jpg";
+import { useState } from "react";
+function FoodItem() {
+  const tabs = ["Main Dishes", "Desserts", "Sea Food", "Beverage"];
+  const [active, setActive] = useState("Main Dishes");
+  const arrayFood = [
+    {
+      id: 0,
+      name: "Chicken Alfredo",
+      subname: "Ricotta / goat cheese / beetroot",
+      priceFull: "$30",
+      priceHalf: "$20",
+    },
+    {
+      id: 1,
+      name: "Chicken Alfredo",
+      subname: "Ricotta / goat cheese / beetroot",
+      priceFull: "$30",
+      priceHalf: "$20",
+    },
+      {
+      id: 2,
+      name: "Chicken Alfredo",
+      subname: "Ricotta / goat cheese / beetroot",
+      priceFull: "$30",
+      priceHalf: "$20",
+    },
+      {
+      id: 3,
+      name: "Chicken Alfredo",
+      subname: "Ricotta / goat cheese / beetroot",
+      priceFull: "$30",
+      priceHalf: "$20",
+    },
+  ];
+  return (
+    <>
+      <div className="">
+        <div className="container">
+          <h2 className="heading__primary">Mặt Hàng Đồ Ăn</h2>
+          <div className="d-flex align-items-md-center mb-4 mt-3">
+            <img src={foodlogo} alt="ảnh logo" className="food__logo" />
+            <div className="w-100 ms-3">
+              <h6 className="number"> 500+</h6>
+              <p className="menu">Menu Và Món Ăn</p>
+            </div>
+          </div>
+
+          <div className="food__info">
+            <div className="row">
+              <div className="col-md-4">
+                <img src={bannerfoodItem} alt="" className="banner__food" />
+              </div>
+              <div className="col-md-8">
+                <div className="menu-tabs">
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab}
+                      className={`menu-tab ${active === tab ? "active" : ""}`}
+                      onClick={() => setActive(tab)}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
+                <ul className="meal-type">
+                  <li>Full</li>
+                  <li>Haft</li>
+                </ul>
+                <ul className="meal-items">
+                  <div className="content">
+                    {arrayFood.map((item) => (
+                      <li key={item.id} className="meal-row">
+                        <div className="top">
+                          <h4> {item.name} </h4>
+                          <div className="price">
+                            <span>{item.priceFull}</span>
+                            <span>{item.priceHalf}</span>
+                          </div>
+                        </div>
+                        <div className="bottom">
+                          <p>{item.subname}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+export default FoodItem;

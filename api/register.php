@@ -33,6 +33,7 @@ $checkSql = "
     WHERE tenDangNhap = '$username'
     LIMIT 1
 ";
+
 $checkRes = $mysqli->query($checkSql);
 if ($checkRes && $checkRes->num_rows > 0) {
     echo "exist";

@@ -1,9 +1,8 @@
 :root {
   --height-header: 80px;
 }
-
 .header {
-  position: absolute;
+ z-index: 99;
   width: 80px;
   display: flex;
   width: 100%;

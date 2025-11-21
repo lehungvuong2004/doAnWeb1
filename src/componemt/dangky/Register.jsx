@@ -11,18 +11,16 @@ function Register() {
   const [email, setEmail] = useState("");
   const [passwd, setPasswd] = useState("");
   // toogle password
-var x = true;
+let x = true;
 function togglePassword() {
+  const input = document.getElementById("passwd");
   if (x) {
-    document.getElementById('passwd').type = 'text';
-    
+    input.type = "text";
   } else {
-
-    document.getElementById('passwd').type = 'password';
-    
+    input.type = "password";
   }
+  x = !x;
 }
-
   // kiểm tra tài
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   // kiểm tra tài mật khẩu
@@ -111,7 +109,6 @@ function togglePassword() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-
                   <label htmlFor="passwd" className="fs-14 w-400">Mật khẩu</label>
                  <div className="d-flex position-relative align-items-center">
                    <input
@@ -122,7 +119,6 @@ className="form-control my-2 pe-5 w-75 ms-3"
                     placeholder="Mật khẩu"
                     value={passwd}
                     onChange={(e) => setPasswd(e.target.value)}
-                 
                   />
                        <i className="fa-solid fa-eye position-absolute eye-icon" onClick={togglePassword}></i>      
                  </div>

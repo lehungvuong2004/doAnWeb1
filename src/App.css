@@ -1,10 +1,12 @@
 :root {
   --text-desc: #ccc;
-  --header : 160px;
+  --header: 160px;
   --fs-1: 1rem;
-  --primary-origin: #FF6C0C;
-  --blue-print: #11224E;
-  --dark:#072b31;
+  --primary-origin: #ff6c0c;
+  --blue-print: #11224e;
+  --dark: #072b31;
+  --padding-tf: 80px 0;
+  --padding-60: 60px 0;
 }
 * {
   margin: 0;
@@ -13,16 +15,22 @@
 }
 body {
   font-family: "Roboto", "Times New Roman", sans-serif;
+
   font-size: 62.5%;
 }
 
 .w-400 {
-    font-weight: 400;
+  font-weight: 400;
+}
+.p-80 {
+  padding: var(--padding-tf);
+}
+.p-60 {
+  padding: var(--padding-60);
 }
 
 .fs-14 {
   font-size: var(--fs-1);
-
 }
 .flex__container {
   display: flex;
@@ -30,7 +38,7 @@ body {
   align-items: center;
 }
 
- .sub-title {
+.sub-title {
   color: var(--text-desc);
   font-size: 1rem;
 }
@@ -38,9 +46,17 @@ body {
   height: 500px;
 }
 .form__background {
-  background: #1f4037;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1f4037; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #99f2c8,
+    #1f4037
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .background__form-left {
   background: #11998e; /* fallback for old browsers */
@@ -147,28 +163,28 @@ body {
 }
 /* Banner */
 .slider {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;      
-    background: #000;     
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background: #000;
 }
 /* Khung chứa tất cả các slide (nó sẽ bị translateX) */
 .slides-wrapper {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 .slides {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 /* Ảnh trong slide */
 .slide__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     
-    position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
 .sub__titlet {
   color: var(--text-desc);
@@ -176,21 +192,22 @@ body {
   font-style: italic;
 }
 .slider__title {
-    top: 50%;
-    left: 20%;
-    color: hsl(136, 29%, 48%);
-    font-size: 1.6rem;
-    text-transform: uppercase;
+  top: 50%;
+  left: 20%;
+  font-weight: 700;
+  color: hsl(136, 29%, 48%);
+  font-size: 1.6rem;
+  text-transform: uppercase;
 }
 .slide__info {
   position: absolute;
   top: 50%;
-  left: 20%;            
-  transform: translateY(-50%);  
+  left: 20%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  gap: 10px;               
+  align-items: center;
+  gap: 10px;
   min-width: 400px;
 }
 .slide__info .btn__order {
@@ -201,34 +218,36 @@ body {
 }
 .prev,
 .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    font-size: 24px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .prev:hover,
 .next:hover {
-    background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
 }
 .prev {
-    left: 15px;
+  left: 15px;
 }
 .next {
-    right: 15px;
+  right: 15px;
 }
-/* food item */ 
+/* food item */
+.food_item {
+  background-image: url(../src/img/background_foodItem.jpg);
+}
 .heading__primary {
-  margin-top: 10px;
   text-align: center;
   font-size: 1.8rem;
 }
@@ -239,14 +258,14 @@ body {
   object-fit: cover;
 }
 .number {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   font-weight: 900;
 }
 .menu {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--text-desc);
 }
-.banner__food{
+.banner__food {
   width: 100%;
 }
 .menu-tabs {
@@ -254,6 +273,61 @@ body {
   gap: 12px;
   margin-bottom: 30px;
 }
+/* Thẻ cha bắt buộc phải relative để tooltip định vị đúng */
+.intro-wrapper {
+  position: relative;
+  display: inline-block; /* hoặc block tùy layout của bạn */
+  width: 100%;
+}
+
+.list-item-intro {
+  font-size: var(--fs-1);
+  line-height: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Tooltip hiện lên trên khi hover */
+.list-item-intro::before {
+  content: attr(data-full);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px); /* hiện phía trên + cách 8px */
+  width: 320px; /* rộng hơn một chút cho dễ đọc */
+  max-width: 90vw;
+  background: #333;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  font-size: var(--fs-1);
+  line-height: 1.5;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Khi hover → hiện tooltip + mũi tên */
+.list-item-intro:hover::before,
+.list-item-intro:hover::after {
+  opacity: 1;
+  top: -214px;
+  left: -23px;
+  position: absolute;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .menu-tab {
   padding: 12px 26px;
   background: #fff;
@@ -268,46 +342,44 @@ body {
   background: #e7e7e7;
 }
 .menu-tab.active {
-  background: #d6001c;  
+  background: #d6001c;
   color: white;
 }
-ul.meal-type{
-      display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-bottom: 15px;
+ul.meal-type {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-bottom: 15px;
 }
 
-
 ul.meal-type li {
-      display: inline-block;
-    border: 1px solid;
-    margin-left: 10px;
-    padding: 1px 10px;
-    min-width: 80px;
-    padding: 10px 10px;
-    text-align: center;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 600;
-  
+  display: inline-block;
+  border: 1px solid;
+  margin-left: 10px;
+  padding: 1px 10px;
+  min-width: 80px;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 ul.meal-items {
   display: grid;
-    grid-row-gap: 30px;
+  grid-row-gap: 30px;
 }
-.meal-row .top{
+.meal-row .top {
   display: flex;
- 
+
   align-items: center;
   justify-content: space-between;
 }
 .meal-row .top span {
-   font-size: 1rem;
+  font-size: 1rem;
 }
 .price {
-      display: flex;
-    gap: 0 80px;
+  display: flex;
+  gap: 0 80px;
 }
 .bottom p {
   font-size: 1rem;
@@ -316,14 +388,14 @@ ul.meal-items {
 /* Danh Sach Nổi Bậc */
 .card {
   border-radius: 20px;
-  overflow: hidden; 
-  height: 450px;
+  overflow: hidden;
+  max-height: 800px;
   border: 10px solid #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .img {
   height: 300px;
-  overflow: hidden; 
+  overflow: hidden;
   border-radius: 15px;
 }
 .card-img {
@@ -332,32 +404,31 @@ ul.meal-items {
   object-fit: cover;
   transition: all 0.4s ease;
 }
- .img .card-img:hover {
+.img .card-img:hover {
   cursor: pointer;
   transform: scale(1.2);
 }
 .famous {
-  
 }
 
 /* set Table  */
 .table {
   position: relative;
- 
   background-image: url("../src/img/banner-Set-Table.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 1
+  z-index: 1;
+  margin-bottom: 0px;
 }
 .form input[type="text"],
 .form input[type="number"],
 .form input[type="date"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    margin: 10px 0;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin: 10px 0;
+  box-sizing: border-box;
 }
 .time-grid {
   display: grid;
@@ -387,13 +458,12 @@ ul.meal-items {
   font-size: 1.4rem;
   font-weight: 500;
   outline: none;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.btn__order:hover:focus {
+.btn__order:hover{
   background-color: var(--blue-print);
   color: #fff;
 }
-
 /* Lớp phủ tối */
 .table::before {
   content: "";
@@ -405,30 +475,50 @@ ul.meal-items {
 /* brand */
 .brand {
   background-color: var(--dark);
-  min-height: 400px;
+  min-height: 380px;
   align-items: center;
   display: flex;
 }
+/* cheft */
+.chef {
+  padding: var(--padding-tf);
+}
+.staff_img {
+  height: 300px;
+  object-fit: cover;
+}
+.chef .swiper-button-next,
+.chef .swiper-button-prev {
+  color: white;
+  background: var(--primary-origin);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.chef .swiper-button-next svg,
+.chef .swiper-button-prev svg{
+  height: 50%;
+}
 
-/* foooter  */
+/* foooter  */ 
 .footer {
-  background-color: #0a0a0a94;
+  background-color: #C0392B;
   color: white;
 }
 .title_footer {
   font-size: 1.4rem;
-  color: #000;
+  color: #FAF3E0;
   font-weight: bold;
 }
-.contact__footer a{
+.contact__footer a {
   text-decoration: none;
-   color: #000;
+  color: #000;
 }
-.company .sub__title, 
+.company .sub__title,
 .contact__footer {
   font-size: 1rem;
 }
-.list__item-rest  li{
+.list__item-rest li {
   margin: 5px 0;
   font-size: 1rem;
 }
@@ -446,4 +536,3 @@ ul.meal-items {
     opacity: 0.6;
   }
 }
-

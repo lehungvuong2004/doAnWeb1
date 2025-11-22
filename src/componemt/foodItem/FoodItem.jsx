@@ -19,14 +19,14 @@ function FoodItem() {
       priceFull: "$30",
       priceHalf: "$20",
     },
-      {
+    {
       id: 2,
       name: "Chicken Alfredo",
       subname: "Ricotta / goat cheese / beetroot",
       priceFull: "$30",
       priceHalf: "$20",
     },
-      {
+    {
       id: 3,
       name: "Chicken Alfredo",
       subname: "Ricotta / goat cheese / beetroot",
@@ -36,10 +36,10 @@ function FoodItem() {
   ];
   return (
     <>
-      <div className="">
+      <div className="p-80 food_item">
         <div className="container">
           <h2 className="heading__primary">Mặt Hàng Đồ Ăn</h2>
-          <div className="d-flex align-items-md-center mb-4 mt-3">
+          <div className="d-flex align-items-md-center my-4">
             <img src={foodlogo} alt="ảnh logo" className="food__logo" />
             <div className="w-100 ms-3">
               <h6 className="number"> 500+</h6>

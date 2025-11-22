@@ -10,15 +10,20 @@ function NoiBac() {
   }, []);
   return (
     <>
-      <div className="">
+      <div className="p-80">
         <div className="container">
-           <h2 className="heading__primary">Danh Sách Mới</h2>
-          <div className="row mt-3">
+          <h2 className="heading__primary">Danh Sách Mới</h2>
+          <p className="d-flex justify-content-end">
+            <a href="" className="text-decoration fs-14 text-black-50">
+              Xem Tất Cả
+            </a>
+          </p>
+          <div className="row mt-4">
             {data.map((item) => (
               <div className="col-md-3">
                 <div className="card">
                   <div className="" key={item.maMonAn}>
-                    <div className="img"  height = "500px">
+                    <div className="img" height="500px">
                       <img
                         src={`http://localhost/DOANWEB/laptrinhweb/src/img/${item.anhMonAn}`}
                         className="card-img-top card-img"
@@ -27,7 +32,14 @@ function NoiBac() {
                     </div>
                     <div className="card-body">
                       <h5 class="card-title">{item.tenMonAn}</h5>
-
+                      <div className="intro-wrapper">
+                        <p
+                          className="list-item-intro"
+                          data-full={item.gioithieu}
+                        >
+                          {item.gioithieu}
+                        </p>
+                      </div>
                       <div className="price__sale d-flex align-content-center justify-content-between fs-14 text-dark">
                         <span>
                           {item.giaMonAn} <span>đ</span>

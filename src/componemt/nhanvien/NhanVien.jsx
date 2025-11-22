@@ -1,0 +1,83 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import img0 from "../../img/truongbep.jpg";
+import img1 from "../../img/quanlibep.jpg";
+import img2 from "../../img/phubep.jpg";
+import img3 from "../../img/vuabanhmi.jpg";
+import img4 from "../../img/phobep.jpg";
+const staff = [
+  {
+    id: 0,
+    img: img0,
+    name: "Nguyễn Thành Trung",
+    chucvu: "Trưởng Bếp",
+  },
+  {
+    id: 1,
+    img: img1,
+    name: "Hồ Hoài Phương",
+    chucvu: "Bưng Ly",
+  },
+  {
+    id: 2,
+    img: img2,
+    name: "Quang Vinh",
+    chucvu: "Rửa Bếp",
+  },
+  {
+    id: 3,
+    img: img3,
+    name: "Minh Trí",
+    chucvu: "Canh Xe",
+  },
+  {
+    id: 4,
+    img: img4,
+    name: "Nguyễn Thành Trung",
+    chucvu: "Trưởng Bếp",
+  },
+];
+
+function NhanVien() {
+  return (
+    <>
+      <div className="chef">
+        <div className="container">
+            <h6 className="heading__primary mb-4">Danh Sách Nhân Viên</h6>   
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={3}
+            spaceBetween={20}
+            navigation
+            pagination={{ clickable: true }}
+         >
+            {staff.map((nv) => {
+
+              return (
+                <SwiperSlide key={nv.id}>
+                  <div className="card">
+                    <img
+                      src={nv.img}
+                      alt=" Ảnh Nhân Viên"
+                      className="staff_img"
+                    />
+                  </div>
+                  <div className="card-body">
+                    <div className="card-tile text-center">
+                      <h5 className="chef__title "> {nv.name}</h5>
+                      <h5 className="cartText"> {nv.chucvu} </h5>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      </div>
+    </>
+  );
+}
+export default NhanVien;

@@ -28,7 +28,7 @@ export default function Footer() {
   ];
   return (
     <>
-      <div className="footer">
+      <div className="footer p-60">
         <div className="container">
           <div className="row py-4">
             <div className="col-md-3 col-sm-6 company">
@@ -43,12 +43,12 @@ export default function Footer() {
 
             <div className="col-md-3 col-sm-6 contact__footer">
               <h6 className="title_footer">Contact Us</h6>
-              <p>
-                Số Điện Thoại:<a href="tel:0973244354">+84 973 244 354</a>
+              <p >
+                Số Điện Thoại:<a href="tel:0973244354" className="ms-2">+84 973 244 354</a>
               </p>
               <p>
                 Gmail:
-                <a href="mailto:lehungvuong2004@gmail.com">
+                <a href="mailto:lehungvuong2004@gmail.com" className="ms-2">
                   lehungvuong2004@gmail.com
                 </a>
               </p>

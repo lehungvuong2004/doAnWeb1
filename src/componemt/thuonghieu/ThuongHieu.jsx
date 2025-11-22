@@ -9,15 +9,15 @@ import th4 from "../../img/thuonghieu4.png";
 function ThuongHieu() {
 
   const swiperConfig = {
-    slidesPerView: 5,
+    slidesPerView: 4,
     spaceBetween: 20,
     autoplay: {
       delay: 1,              
       disableOnInteraction: false,
     },
-    speed: 5000,              
+    speed: 3000,              
     loop: true,
-    loopAdditionalSlides: 10, 
+    loopAdditionalSlides: 1, 
     allowTouchMove: false,     
     modules: [Autoplay],
     breakpoints: {
@@ -36,6 +36,10 @@ function ThuongHieu() {
     { id: "b2", img: th2 },
     { id: "b3", img: th3 },
     { id: "b4", img: th4 },
+    { id: "c1", img: th1 },
+    { id: "c2", img: th2 },
+    { id: "c3", img: th3 },
+    { id: "c4", img: th4 },
   ];
 
  return (

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../img/logo.jpg";
-import "./Header.css";
+import "../../App.css";
 
 const NAV_ITEMS = [
   { title: "Trang Chủ", path: "/" },
@@ -28,7 +28,7 @@ const NAV_ITEMS = [
   },
   {
     title: "Tin Tức",
-    subMenu: [{ title: "Tin Khuyến Mãi", path: "/news/promo" }],
+    subMenu: [{ title: "Tin Khuyến Mãi", path: "/sale/tinkhuyenmai" }],
   },
 ];
 

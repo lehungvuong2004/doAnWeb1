@@ -50,7 +50,7 @@ function ThuongHieu() {
                     {brands.map((item) => (
                         <SwiperSlide key={item.id}>
                             <img
-                                src={item.img}
+                                src={item.img || null}
                                 alt="brand"
                                 className="img-fluid d-block mx-auto"
                                 style={{ height: 60, objectFit: "contain" }}

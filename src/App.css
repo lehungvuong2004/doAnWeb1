@@ -15,7 +15,6 @@
 }
 body {
   font-family: "Roboto", "Times New Roman", sans-serif;
-
   font-size: 62.5%;
 }
 
@@ -32,6 +31,152 @@ body {
 .fs-14 {
   font-size: var(--fs-1);
 }
+/* header */
+:root {
+  --height-header: 80px;
+  --color-header: #2C3E50;
+}
+.header {
+ z-index: 99;
+ height: 110px;
+ 
+  display: flex;
+  width: 100%;
+  background-color: var(--color-header) ;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu__list > li > a {
+  padding: 15px 10px;
+  transition: all 0.3s ease-in-out;
+}
+.menu__list > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* nằm sát mép dưới của a */
+  left: 0;
+  height: 3px;
+  width: 0;
+  background-color: #ffffff; /* màu thanh */
+  transition: width 0.3s ease-in-out;
+}
+.menu__list > li > a:hover::after {
+  width: 100%;
+}
+.logo__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.menu__list {
+  display: flex;
+  height: 100%;
+  gap: 0 18px;
+  align-items: center;
+}
+.menu__list > li > a {
+  text-decoration: none;
+
+  font-size: 1.4rem;
+  color: #F1C40F;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.4rem;
+  color: #000;
+}
+.user-list li a i {
+  color: #fff;
+}
+.menu {
+  position: relative;
+  height: 100%;
+}
+.menu__list li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu__list li .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: white;
+  min-width: 200px;
+  border-radius: 5px;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease;
+}
+.sub-menu > li > a {
+  text-decoration: none;
+  color: #000;
+  border-radius: 5px;
+  width: 100%;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 12px 8px;
+}
+
+.sub-menu > li > a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.user {
+  height: 100%;
+}
+.menu__list li:hover .sub-menu {
+  display: block;
+}
+.user-list {
+  position: relative;
+  height: 100%;
+}
+.user-list li {
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+.icon-login {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 180px;
+  border-radius: 5px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.icon-login li a {
+  display: block;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.icon-login li a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.user-list li:hover .icon-login {
+  display: block;
+}
+
+/*  */
 .flex__container {
   display: flex;
   justify-content: space-between;
@@ -534,5 +679,220 @@ ul.meal-items {
   100% {
     transform: translateY(100vh);
     opacity: 0.6;
+  }
+}
+/* tin khuyến mãi  */
+.news-section {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  min-height: 100vh;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.category-badge {
+  display: inline-block;
+  background-color: #d4703c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-top: 1rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.news-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.news-card-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.news-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-card-image img {
+  transform: scale(1.08);
+}
+
+.news-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.news-card:hover .news-card-overlay {
+  opacity: 1;
+}
+
+.read-more {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.news-card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card:hover .news-card-title {
+  color: #d4703c;
+}
+
+.news-card-intro {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.trending-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  position: sticky;
+  top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.trending-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trending-title i {
+  color: #d4703c;
+}
+
+.trending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.trending-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
+}
+
+.trending-item:last-child {
+  border-bottom: none;
+}
+
+.trending-item:hover {
+  padding-left: 0.5rem;
+  color: #d4703c;
+}
+
+.trending-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  background: linear-gradient(135deg, #d4703c 0%, #c9633a 100%);
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.trending-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .trending-section {
+    position: relative;
+    top: auto;
+    margin-top: 2rem;
   }
 }

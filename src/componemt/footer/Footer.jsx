@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   const footer_Link = [
     {
@@ -33,7 +35,7 @@ export default function Footer() {
           <div className="row py-4">
             <div className="col-md-3 col-sm-6 company">
               <div className="logo">
-                <img src="" alt="" className="logo__footer" />
+                <img src= {null} alt="" className="logo__footer" />
               </div>
               <h6 className="title_footer">Công ty tinh của VƯƠNG và VINH</h6>
               <p className="sub__title">
@@ -59,9 +61,9 @@ export default function Footer() {
               <ul className="quick">
                 {footer_Link.map((item) => (
                   <li key={item.id} className="py-1">
-                    <a href={item.path} className="text-decoration-none">
+                    <Link to={item.path || null} className="text-decoration-none">
                       {item.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

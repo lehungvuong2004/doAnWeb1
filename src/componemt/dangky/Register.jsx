@@ -74,7 +74,7 @@ function togglePassword() {
             {/* Ảnh bên trái */}
             <div className="col-md-6 h-100 d-none d-md-flex align-items-center justify-content-center p-0">
               <img
-                src={imglogin}
+                src={imglogin ?imglogin : null }
                 alt="Ảnh Thức Ăn"
                 className="rounded-2 w-100 img__register"
               />

@@ -1,7 +1,6 @@
 <?php 
 
 include "../src/database/database.php";
-
 $db = new connect();
 $sql = "SELECT * FROM nhanvien";
 $result = $db->select($sql);  
@@ -11,4 +10,6 @@ while ($row = $result->fetch_assoc()) {
 }
 // Giữ nguyên tiếng Việt đẹp
 echo json_encode($arr, JSON_UNESCAPED_UNICODE);
+
+
 ?>

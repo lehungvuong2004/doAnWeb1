@@ -60,7 +60,7 @@ function NhanVien() {
                 <SwiperSlide key={nv.id}>
                   <div className="card">
                     <img
-                      src={nv.img}
+                      src={nv.img || null}
                       alt=" Ảnh Nhân Viên"
                       className="staff_img"
                     />

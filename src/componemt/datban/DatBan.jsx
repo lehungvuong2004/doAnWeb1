@@ -1,3 +1,4 @@
+import { Link  } from "react-router-dom";
 const many__people = [
   {
     id: 0,
@@ -33,7 +34,6 @@ const generateTimes = () => {
     const h = hour.toString().padStart(2, "0");
     const m = minute.toString().padStart(2, "0");
     times.push(`${h}:${m}`);
-
     minute += 30;
     if (minute === 60) {
       minute = 0;
@@ -64,12 +64,12 @@ function DatBan() {
                <ul className="">
           {many__people.map((item) => (
             <li key={item.id} className="py-1">
-                <i class="fa-solid fa-angle-right me-2"></i>
-              <span
-                href={item.path}
+                <i className="fa-solid fa-angle-right me-2"></i>
+              <Link
+                to ={item.path || null}
                 className="text-decoration-none text-white fs-14 "  >
                 {item.people}
-              </span>
+              </Link>
             </li>
           ))}
         </ul>

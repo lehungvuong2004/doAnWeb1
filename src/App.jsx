@@ -2,8 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import LoginForm from "./componemt/login/LoginForm.jsx";
 import { Forget } from "./componemt/quenmatkhau/Forget.jsx";
 import Register from "./componemt/dangky/Register.jsx";
+import NhanVien from "./componemt/nhanvien/NhanVien.jsx"; 
 import MainLayout from "./mainlayout/MainLayOut.jsx";
 import TinKhuyenMai from "./componemt/header/TinKhuyenMai.jsx";
+import DauBepHeader from "./componemt/header/DauBepHeader.jsx";
 import LienHeChiDuong from "./componemt/header/LienHeChiDuong.jsx";
 import BiQuyetNauAn from "./componemt/header/BiQuyetNauAn.jsx";
 function App() {
@@ -16,7 +18,7 @@ function App() {
         <Route path="/sale/tinkhuyenmai" element= {<TinKhuyenMai/>} /> 
         <Route path="/map" element= {<LienHeChiDuong/>} /> 
         <Route path="/recipes" element= {<BiQuyetNauAn/>} /> 
-        
+         <Route path="/chef" element={<DauBepHeader />} />
         <Route path="/forget" element={<Forget />} />
       </Routes>
       {/* <MainLayout/> */}

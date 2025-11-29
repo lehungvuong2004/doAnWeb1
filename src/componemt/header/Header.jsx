@@ -3,12 +3,12 @@ import Logo from "../../img/logo.jpg";
 import "../../App.css";
 
 const NAV_ITEMS = [
-  { title: "Trang Chủ", path: "/" },
+  { title: "Trang Chủ", path: "/", scroll: true },
   {
     title: "Menu",
     subMenu: [
-      { title: "Đồ Ăn", path: "/menu/food" },
-      { title: "Nước Uống", path: "/menu/drink" },
+      { title: "Đồ Ăn", path: "#food", scroll: true },
+      { title: "Nước Uống", path: "#drink", scroll: true },
     ],
   },
   {
@@ -48,12 +48,20 @@ function Header() {
           <ul className="menu__list list-unstyled">
             {NAV_ITEMS.map((item, index) => (
               <li key={index}>
-                <Link to={item.path || "#"}>{item.title}</Link>
+                {item.scroll ? (
+                  <a href={item.path}>{item.title}</a>
+                ) : (
+                  <Link to={item.path || "#"}>{item.title}</Link>
+                )}
                 {item.subMenu && (
                   <ul className="sub-menu">
                     {item.subMenu.map((sub, subIndex) => (
                       <li key={subIndex}>
-                        <Link to={sub.path}>{sub.title}</Link>
+                        {sub.scroll ? (
+                          <a href={sub.path}>{sub.title}</a>
+                        ) : (
+                          <Link to={sub.path}>{sub.title}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -72,9 +80,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="#">
-                <i className="fa-solid fa-users"></i>
-              </Link>
+              <i className="fa-solid fa-users"></i>
               <ul className="sub-menu icon-login">
                 <li>
                   <Link to="/login">Đăng Nhập</Link>
@@ -96,5 +102,4 @@ function Header() {
     </header>
   );
 }
-
 export default Header;

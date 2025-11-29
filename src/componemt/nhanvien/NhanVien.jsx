@@ -18,7 +18,7 @@ const staff = [
   {
     id: 1,
     img: img1,
-    name: "Hồ Hoài Phương",
+    name: "Alain Ducasse",
     chucvu: "Bưng Ly",
   },
   {
@@ -30,21 +30,21 @@ const staff = [
   {
     id: 3,
     img: img3,
-    name: "Minh Trí",
-    chucvu: "Canh Xe",
+    name: "Kao Siêu Lực",
+    chucvu: "Chuyên Gia Bánh Mì",
   },
   {
     id: 4,
     img: img4,
     name: "Nguyễn Thành Trung",
-    chucvu: "Trưởng Bếp",
+    chucvu: "Cố Vấn Ẩm Thực Cấp Cao",
   },
 ];
 
 function NhanVien() {
   return (
     <>
-      <div className="chef">
+      <div className="chef" id="chef">
         <div className="container">
             <h6 className="heading__primary mb-4">Danh Sách Nhân Viên</h6>   
           <Swiper
@@ -55,7 +55,6 @@ function NhanVien() {
             pagination={{ clickable: true }}
          >
             {staff.map((nv) => {
-
               return (
                 <SwiperSlide key={nv.id}>
                   <div className="card">

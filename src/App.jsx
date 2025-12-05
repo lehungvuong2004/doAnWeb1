@@ -8,6 +8,7 @@ import TinKhuyenMai from "./componemt/header/TinKhuyenMai.jsx";
 import DauBepHeader from "./componemt/header/DauBepHeader.jsx";
 import LienHeChiDuong from "./componemt/header/LienHeChiDuong.jsx";
 import BiQuyetNauAn from "./componemt/header/BiQuyetNauAn.jsx";
+import GioiThieuNhaHang from "./componemt/header/GioiThieuNhaHang.jsx";
 function App() {
   return (
   <>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/map" element= {<LienHeChiDuong/>} /> 
         <Route path="/recipes" element= {<BiQuyetNauAn/>} /> 
          <Route path="/chef" element={<DauBepHeader />} />
+        <Route path="/about" element={<GioiThieuNhaHang />} />
         <Route path="/forget" element={<Forget />} />
       </Routes>
       {/* <MainLayout/> */}

@@ -40,7 +40,11 @@ function FoodItem() {
         <div className="container">
           <h2 className="heading__primary">Mặt Hàng Đồ Ăn</h2>
           <div className="d-flex align-items-md-center my-4">
-            <img src={foodlogo ? foodlogo : null} alt="ảnh logo" className="food__logo" />
+            <img
+              src={foodlogo ? foodlogo : null}
+              alt="ảnh logo"
+              className="food__logo"
+            />
             <div className="w-100 ms-3">
               <h6 className="number"> 500+</h6>
               <p className="menu">Menu Và Món Ăn</p>
@@ -50,7 +54,11 @@ function FoodItem() {
           <div className="food__info">
             <div className="row">
               <div className="col-md-4">
-                <img src={bannerfoodItem?bannerfoodItem:null} alt="" className="banner__food" />
+                <img
+                  src={bannerfoodItem ? bannerfoodItem : null}
+                  alt=""
+                  className="banner__food"
+                />
               </div>
               <div className="col-md-8">
                 <div className="menu-tabs">

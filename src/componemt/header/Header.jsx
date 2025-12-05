@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
-import Logo from "../../img/logo.jpg";
-import "../../App.css";
+"use client"
 
+import { useState } from "react"
+import logo from "./img_new/logo.jpg";
+import "../../App.css";
 const NAV_ITEMS = [
   { title: "Trang Chủ", path: "/", scroll: true },
   {
     title: "Menu",
     subMenu: [
-      { title: "Đồ Ăn", path: "#food", scroll: true },
-      { title: "Nước Uống", path: "#drink", scroll: true },
+      { title: "Đồ Ăn", path: "/food" },
+      { title: "Nước Uống", path: "/drink" },
     ],
   },
   {
@@ -30,41 +31,65 @@ const NAV_ITEMS = [
     title: "Tin Tức",
     subMenu: [{ title: "Tin Khuyến Mãi", path: "/sale/tinkhuyenmai" }],
   },
-];
+]
 
-function Header() {
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [openSubMenu, setOpenSubMenu] = useState(null)
+
+  const toggleMenu = () => setIsOpen(!isOpen)
+
+  const toggleSubMenu = (index) => {
+    setOpenSubMenu(openSubMenu === index ? null : index)
+  }
+
   return (
     <header className="header">
       <div className="container flex__container">
         {/* logo */}
         <div className="logo">
-          <Link to="/">
-            <img src={Logo} alt="logo" className="logo__img" />
-          </Link>
+          <a href="/">
+            <img src={logo} alt="logo" className="logo__img" />
+          </a>
         </div>
 
-        {/* menu */}
-        <nav className="menu">
+        <button
+          className={`navbar-toggler ${isOpen ? "active" : ""}`}
+          type="button"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
+        >
+          <span className="toggler-icon"></span>
+          <span className="toggler-icon"></span>
+          <span className="toggler-icon"></span>
+        </button>
+
+        <nav className={`menu ${isOpen ? "menu--open" : ""}`}>
           <ul className="menu__list list-unstyled">
             {NAV_ITEMS.map((item, index) => (
-              <li key={index}>
-                {item.scroll ? (
-                  <a href={item.path}>{item.title}</a>
-                ) : (
-                  <Link to={item.path || "#"}>{item.title}</Link>
-                )}
-                {item.subMenu && (
-                  <ul className="sub-menu">
-                    {item.subMenu.map((sub, subIndex) => (
-                      <li key={subIndex}>
-                        {sub.scroll ? (
+              <li key={index} className={openSubMenu === index ? "submenu-open" : ""}>
+                {item.subMenu ? (
+                  <>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        toggleSubMenu(index)
+                      }}
+                    >
+                      {item.title}
+                      <span className="arrow-down d-lg-none"></span>
+                    </a>
+                    <ul className={`sub-menu ${openSubMenu === index ? "sub-menu--open" : ""}`}>
+                      {item.subMenu.map((sub, subIndex) => (
+                        <li key={subIndex}>
                           <a href={sub.path}>{sub.title}</a>
-                        ) : (
-                          <Link to={sub.path}>{sub.title}</Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <a href={item.path || "#"}>{item.title}</a>
                 )}
               </li>
             ))}
@@ -75,24 +100,55 @@ function Header() {
         <div className="user">
           <ul className="list-unstyled flex__container gap-4 user-list">
             <li>
-              <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping"></i>
-              </Link>
+              <a href="/cart">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="cart-icon"
+                >
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </a>
             </li>
             <li>
-              <i className="fa-solid fa-users"></i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="user-icon"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
               <ul className="sub-menu icon-login">
                 <li>
-                  <Link to="/login">Đăng Nhập</Link>
+                  <a href="/login">Đăng Nhập</a>
                 </li>
                 <li>
-                  <Link to="/register">Đăng Ký</Link>
+                  <a href="/register">Đăng Ký</a>
                 </li>
                 <li>
-                  <Link to="/history">Lịch Sử Đặt Bàn</Link>
+                  <a href="/history">Lịch Sử Đặt Bàn</a>
                 </li>
                 <li>
-                  <Link to="/logout">Đăng Xuất</Link>
+                  <a href="/logout">Đăng Xuất</a>
                 </li>
               </ul>
             </li>
@@ -100,6 +156,5 @@ function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }
-export default Header;

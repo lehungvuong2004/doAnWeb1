@@ -9,12 +9,11 @@ import "../../App.css";
 function DauBepHeader() {
   return (
     <>
-      {/* Header + Slider Nhân Viên */}
       <Header />
       <NhanVien />
 
-      <div className="container py-5">
-        <div className="row">
+      <div className="container py-5" >
+        <div className="row" style={{marginTop: -80}}>
           {/* Nội dung chính */}
           <div className="col-md-8">
             <h2 className="mb-3 fw-bold text-primary">

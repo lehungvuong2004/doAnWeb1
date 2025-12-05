@@ -39,7 +39,7 @@ function LienHeChiDuong() {
       <section className="py-5 bg-light">
         
         <div className="container">
-         <p><Link to="/" className="fs-14 text-dark">Quay Lại Trang Chủ</Link></p>
+         <p className="d-flex align-content-center"><Link to="/" className="fs-14 text-dark" ><i class="fa-solid fa-arrow-left-long" style={{marginLeft: 5}}></i> Quay Lại Trang Chủ</Link></p>
           {/* Header */}
           <div className="text-center mb-5">
             <h1 className="display-4 fw-bold text-dark mb-3">Liên Hệ & Chỉ Đường</h1>

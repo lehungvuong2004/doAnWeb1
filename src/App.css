@@ -33,79 +33,89 @@ body {
   font-size: var(--fs-1);
 }
 /* header */
+/* Thêm CSS cho Header theo khuôn mẫu */
 :root {
   --height-header: 80px;
-  --color-header: #2C3E50;
+  --color-header: #2c3e50;
 }
+
 .header {
- z-index: 99;
- height: 110px;
- 
+  z-index: 99;
+  height: 110px;
   display: flex;
   width: 100%;
-  background-color: var(--color-header) ;
-}
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.menu__list > li > a {
-  padding: 15px 10px;
-  transition: all 0.3s ease-in-out;
-}
-.menu__list > li > a::after {
-  content: "";
-  position: absolute;
-  bottom: 0; /* nằm sát mép dưới của a */
+  background-color: var(--color-header);
+  position: fixed;
+  top: 0;
   left: 0;
-  height: 3px;
-  width: 0;
-  background-color: #ffffff; /* màu thanh */
-  transition: width 0.3s ease-in-out;
 }
-.menu__list > li > a:hover::after {
-  width: 100%;
+
+.flex__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 }
+
 .logo__img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+.menu {
+  position: relative;
+  height: 100%;
+}
+
 .menu__list {
   display: flex;
   height: 100%;
   gap: 0 18px;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
+.menu__list > li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .menu__list > li > a {
   text-decoration: none;
-
-  font-size: 1.4rem;
-  color: #F1C40F;
-}
-.user {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 1.4rem;
-  color: #000;
-}
-.user-list li a i {
-  color: #fff;
-}
-.menu {
+  font-size: 1.1rem;
+ color: #fff;
+  padding: 15px 10px;
+  transition: all 0.3s ease-in-out;
   position: relative;
-  height: 100%;
-}
-.menu__list li {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
 }
 
+.menu__list > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background-color: #ffffff;
+  transition: width 0.3s ease-in-out;
+}
+
+.menu__list > li > a:hover::after {
+  width: 100%;
+}
+
+/* Sub menu */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .menu__list li .sub-menu {
   position: absolute;
   top: 100%;
@@ -118,13 +128,14 @@ ul {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease;
 }
+
 .sub-menu > li > a {
   text-decoration: none;
   color: #000;
   border-radius: 5px;
   width: 100%;
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 12px 8px;
 }
 
@@ -132,21 +143,39 @@ ul {
   background-color: #000;
   color: #fff;
 }
-.user {
-  height: 100%;
-}
+
 .menu__list li:hover .sub-menu {
   display: block;
 }
+
+/* User section */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  color: #000;
+  height: 100%;
+}
+
 .user-list {
   position: relative;
   height: 100%;
+  margin: 0;
 }
+
 .user-list li {
   height: 100%;
   align-items: center;
   display: flex;
 }
+
+.user-list li a i,
+.user-list li > i {
+  color: #fff;
+  cursor: pointer;
+}
+
 .icon-login {
   position: absolute;
   top: 100%;
@@ -164,7 +193,7 @@ ul {
   padding: 10px;
   color: #000;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 5px;
 }
 
@@ -177,6 +206,185 @@ ul {
   display: block;
 }
 
+/* Navbar toggler cho mobile */
+.navbar-toggler {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 101;
+}
+
+/* Thêm CSS cho 3 gạch hamburger */
+.toggler-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #f1c40f;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi active - biến thành X */
+.navbar-toggler.active .toggler-icon:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.navbar-toggler.active .toggler-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active .toggler-icon:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+/* Mũi tên dropdown bằng CSS */
+.arrow-down {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 8px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #f1c40f;
+  transition: transform 0.3s ease;
+}
+.submenu-open .arrow-down {
+  transform: rotate(180deg);
+}
+/* CSS cho icons SVG */
+.cart-icon,
+.user-icon {
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.cart-icon:hover,
+.user-icon:hover {
+  color: #f1c40f;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .moutain {
+    min-height: 250px;
+    margin-top: 56px;
+  }
+
+  .mountain__title {
+    font-size: 2rem;
+  }
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  .about-image-wrapper::before {
+    display: none;
+  }
+}
+/* Responsive cho header */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: flex;
+  }
+  .menu {
+    position: fixed;
+    top: 110px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 110px);
+    background-color: var(--color-header);
+    transition: left 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+  .menu--open {
+    left: 0;
+  }
+  .menu__list {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 0;
+  }
+  .menu__list > li {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .menu__list > li > a {
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu__list > li > a::after {
+    display: none;
+  }
+
+  .menu__list li .sub-menu {
+    position: static;
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 20px;
+  }
+
+  .menu__list li:hover .sub-menu {
+    display: none;
+  }
+
+  .menu__list li .sub-menu--open,
+  .menu__list li.submenu-open .sub-menu {
+    display: block;
+  }
+
+  .sub-menu > li > a {
+    padding: 10px;
+  } 
+  /* Điều chỉnh margin-top cho moutain */
+  .moutain {
+    margin-top: 110px;
+  }
+}
+@media (max-width: 576px) {
+  .header {
+    height: 80px;
+  }
+
+  .logo__img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .menu {
+    top: 80px;
+    height: calc(100vh - 80px);
+  }
+
+  .moutain {
+    margin-top: 80px;
+  }
+
+  .user {
+    gap: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /*  */
 .flex__container {
   display: flex;
@@ -238,6 +446,107 @@ ul {
   align-items: center;
   justify-content: center;
 }
+/* gioi thieu dau bep */
+
+/* Background */
+.moutain {
+  background-image: url("./img/gioithieu.png");
+  min-height: 350px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.moutain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.mountain__back {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.mountain__title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+/* Khối trắng chứa nội dung */
+.info-container {
+  background: #fff;
+  margin-top: -30px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề nhỏ */
+.info-title {
+  color: #d35400;
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Nội dung */
+.info-text {
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Các mục nội dung lớn */
+.section {
+  padding: 20px 0;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 15px;
+}
+
+.section-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Danh sách */
+.core-values li,
+.why-us li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Hover nhẹ */
+.col-md-4 {
+  transition: 0.3s;
+}
+
+.col-md-4:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mountain__title {
+    font-size: 32px;
+  }
+
+  .info-container {
+    padding: 20px;
+  }
+}
+
 
 .background__register-right {
   background: #fff;

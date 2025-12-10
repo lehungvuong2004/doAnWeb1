@@ -16,7 +16,6 @@ if ($result && $result->num_rows > 0) {
         $data[] = $row;  
     }
 }
-
 // Trả về JSON với ký tự Unicode giữ nguyên
-echo json_encode($data, JSON_UNESCAPED_UNICODE);
+echo json_encode($data);
 ?>

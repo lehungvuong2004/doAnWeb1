@@ -39,7 +39,7 @@ function LienHeChiDuong() {
       <section className="py-5 bg-light">
         
         <div className="container">
-         <p className="d-flex align-content-center"><Link to="/" className="fs-14 text-dark" ><i class="fa-solid fa-arrow-left-long" style={{marginLeft: 5}}></i> Quay Lại Trang Chủ</Link></p>
+         <p className="d-flex align-content-center"><Link to="/" className="fs-14 text-dark" ><i className="fa-solid fa-arrow-left-long" style={{marginLeft: 5}}></i> Quay Lại Trang Chủ</Link></p>
           {/* Header */}
           <div className="text-center mb-5">
             <h1 className="display-4 fw-bold text-dark mb-3">Liên Hệ & Chỉ Đường</h1>
@@ -54,26 +54,26 @@ function LienHeChiDuong() {
                   <h3 className="card-title mb-4 fw-bold">📍 Thông Tin Liên Hệ</h3>
 
                   <div className="mb-4">
-                    <h6 className="fw-bold text-warning mb-2"><i class="fa-solid fa-phone"></i> Điện Thoại</h6>
+                    <h6 className="fw-bold text-warning mb-2"><i className="fa-solid fa-phone"></i> Điện Thoại</h6>
                     <a href="tel:0123456789" className="text-decoration-none text-dark hover-link fs-6">
                       <p className="mb-0">0123 456 789</p>
                     </a>
                   </div>
 
                   <div className="mb-4">
-                    <h6 className="fw-bold text-warning mb-2 "><i class="fa-solid fa-envelope"></i> Email</h6>
+                    <h6 className="fw-bold text-warning mb-2 "><i className="fa-solid fa-envelope"></i> Email</h6>
                     <a href="mailto:info@nha-hang.com" className="text-decoration-none text-dark hover-link fs-6">
                       <p className="mb-0">info@nha-hang.com</p>
                     </a>
                   </div>
 
                   <div className="mb-4">
-                    <h6 className="fw-bold text-warning mb-2"><i class="fa-solid fa-location-arrow"></i> Địa Chỉ</h6>
+                    <h6 className="fw-bold text-warning mb-2"><i className="fa-solid fa-location-arrow"></i> Địa Chỉ</h6>
                     <p className="mb-0 fs-6">Đường cao lỗ, phường 4, quận 8, HCM</p>
                   </div>
 
                   <div className="mb-4">
-                    <h6 className="fw-bold text-warning mb-2"><i class="fa-solid fa-clock"></i> Giờ Mở Cửa</h6>
+                    <h6 className="fw-bold text-warning mb-2"><i className="fa-solid fa-clock"></i> Giờ Mở Cửa</h6>
                     <p className="mb-1 fs-6">Thứ Hai - Chủ Nhật: 10:00 - 17:00</p>
                     <p className="mb-0 text-muted small fs-6">Đóng cửa: Thứ Bảy Chủ (Ngoại trừ Lễ)</p>
                   </div>
@@ -201,16 +201,16 @@ function LienHeChiDuong() {
                 <h4 className="fw-bold mb-4">Theo Dõi Chúng Tôi</h4>
                 <div className="d-flex justify-content-center gap-3">
                   <a href="https://facebook.com" className="btn btn-primary btn-lg" title="Facebook">
-                    <i class="fa-brands fa-facebook"></i>
+                    <i className="fa-brands fa-facebook"></i>
                   </a>
                   <a href="https://instagram.com" className="btn btn-danger btn-lg" title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-instagram"></i>
                   </a>
                   <a href="https://tiktok.com" className="btn btn-dark btn-lg" title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
+                    <i className="fa-brands fa-tiktok"></i>
                   </a>
                   <a href="https://youtube.com" className="btn btn-danger btn-lg" title="YouTube">
-                   <i class="fa-brands fa-youtube"></i>
+                   <i className="fa-brands fa-youtube"></i>
                   </a>
                 </div>
               </div>

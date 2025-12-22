@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 // ... (Giữ nguyên các import component của bạn)
 import LoginForm from "./componemt/login/LoginForm.jsx";
 import { Forget } from "./componemt/quenmatkhau/Forget.jsx";
+import Banner from "./componemt/banner/Banner.jsx";
 import Register from "./componemt/dangky/Register.jsx";
 import NhanVien from "./componemt/nhanvien/NhanVien.jsx";
 import MainLayout from "./mainlayout/MainLayOut.jsx";

@@ -182,10 +182,14 @@ export default function Header() {
                                 ) : (
                                     <>
                                         <li className="px-3">
-                                            Xin chào, <b>{user.username}</b>
+                                            Xin chào,{" "}
+                                            <b>
+                                                {user.tenNguoiDung ??
+                                                    user.tenDangNhap}
+                                            </b>
                                         </li>
                                         <li>
-                                            <Link to="/history">
+                                            <Link to="/cart">
                                                 Lịch Sử Đặt Bàn
                                             </Link>
                                         </li>

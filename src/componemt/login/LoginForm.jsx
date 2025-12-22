@@ -19,20 +19,26 @@ function LoginForm() {
         const formData = new FormData();
         formData.append("username", username);
         formData.append("passwd", passwd);
+
         try {
             const res = await fetch(
                 "http://localhost/DOANWEB/laptrinhweb/api/login.php",
-                {
-                    method: "POST",
-                    body: formData,
-                }
+                { method: "POST", body: formData }
             );
             const data = await res.json();
+
             if (data.status === "success") {
-                alert("Đăng nhập thành công! Chào " + data.user.username);
-                // Lưu user vào localStorage nếu cần
+                // Lưu user vào localStorage
                 localStorage.setItem("user", JSON.stringify(data.user));
-                navigate("/"); // chuyển về trang chủ
+                // Chuyển hướng dựa trên redirect trả về từ PHP
+                if (data.user.tenDangNhap === "admin123") {
+                    // Admin -> dashboard
+                    window.location.href =
+                        "http://localhost/DOANWEB/laptrinhweb/api/dashboard.php";
+                } else {
+                    // User bình thường -> trang chủ
+                    window.location.href = data.redirect;
+                }
             } else {
                 alert(data.message || "Đăng nhập thất bại");
             }

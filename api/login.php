@@ -1,42 +1,64 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json");
-header("Access-Control-Allow-Methods: POST");
-include "../src/database/database.php";
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+session_start();
+header('Content-Type: application/json'); 
+
+include '../src/database/database.php';
+
 $db = new connect();
 $mysqli = $db->getMysqli();
+
 $username = $_POST['username'] ?? '';
 $passwd   = $_POST['passwd'] ?? '';
 
-if ($username === '' || $passwd === '') {
-    echo json_encode(["status" => "error", "message" => "Thiếu username hoặc password"]);
-    exit;
-}
-$stmt = $mysqli->prepare("SELECT maTaiKhoan, tenDangNhap, matKhau FROM taikhoan WHERE tenDangNhap = ? LIMIT 1");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    echo json_encode(["status" => "error", "message" => "Tài khoản không tồn tại"]);
+if (!$username || !$passwd) {
+    echo json_encode(['status' => 'error', 'message' => 'Vui lòng nhập đầy đủ thông tin']);
     exit;
 }
 
-$user = $result->fetch_assoc();
+$username = $mysqli->real_escape_string($username);
 
-// kiểm tra password hash
-if (!password_verify($passwd, $user['matKhau'])) {
-    echo json_encode(["status" => "error", "message" => "Sai mật khẩu"]);
-    exit;
+// Lấy user
+$sql = "SELECT * FROM TaiKhoan WHERE tenDangNhap = '$username' LIMIT 1";
+$result = $mysqli->query($sql);
+
+if ($result && $result->num_rows > 0) {
+
+    $user = $result->fetch_assoc();
+
+    if (password_verify($passwd, $user['matKhau'])) {
+
+        // Kiểm tra role admin (có thể là tên + vai trò)
+        if ($user['tenDangNhap'] === 'admin123') {
+            echo json_encode([
+                'status' => 'success',
+                'user' => $user,
+                'redirect' => '/dashboard.php'
+            ]);
+            exit;
+        } else {
+            echo json_encode([
+                'status' => 'success',
+                'user' => $user,
+                'redirect' => '/' // trang chủ ReactJS
+            ]);
+            exit;
+        }
+    }
 }
 
+// Sai mật khẩu hoặc không tồn tại
 echo json_encode([
-    "status" => "success",
-    "message" => "Đăng nhập thành công",
-    "user" => [
-        "id" => $user['maTaiKhoan'],
-        "username" => $user['tenDangNhap']
-    ]
+    'status' => 'error',
+    'message' => 'Tên đăng nhập hoặc mật khẩu không đúng'
 ]);
 exit;
 ?>

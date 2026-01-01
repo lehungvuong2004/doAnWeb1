@@ -33,7 +33,7 @@ function Cart({ cart, removeFromCart, updateQuantity }) {
                             <tr key={item.masp}>
                                 <td>
                                     <img
-                                        src={`http://localhost/DOANWEB/laptrinhweb/src/img/${item.anhsp}`}
+                                        src={`http://localhost/DOANWEB/laptrinhweb/api/uploads/${item.anhsp}`}
                                         alt={item.tensp}
                                         width="80"
                                         height="80"

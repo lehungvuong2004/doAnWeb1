@@ -8,7 +8,6 @@ $arr = [];
 while ($row = $result->fetch_assoc()) { 
     $arr[] = $row;
 }
-// Giữ nguyên tiếng Việt đẹp
 echo json_encode($arr, JSON_UNESCAPED_UNICODE);
 
 

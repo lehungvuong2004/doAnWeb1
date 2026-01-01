@@ -12,19 +12,19 @@ import NhanVien from "../componemt/nhanvien/NhanVien.jsx";
 import Footer from "../componemt/footer/Footer.jsx";
 
 import "../App.css";
-function MainLayOut() {
-  return (
-    <>
-      <Header/>
-      <Banner/>
-      <FoodItem/>
-      <DatBan/>
-      <NoiBac/>
-      <ThuongHieu />
-      <NhanVien/>
-       <Footer/>
-    </>
-  );
+function MainLayOut({ cartCount }) {
+    return (
+        <>
+            <Header cartCount={cartCount} />
+            <Banner />
+            <FoodItem />
+            <DatBan />
+            <NoiBac />
+            <ThuongHieu />
+            <NhanVien />
+            <Footer />
+        </>
+    );
 }
 
 export default MainLayOut;

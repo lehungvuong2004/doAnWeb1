@@ -24,7 +24,10 @@ function NoiBac() {
                     </p>
                     <div className="row mt-4">
                         {data.slice(0, 4).map((item) => (
-                            <div className="col-md-3" key={item.maMonAn}>
+                            <div
+                                className="col-md-3  mt-4 mt-md-0"
+                                key={item.maMonAn}
+                            >
                                 <div className="card">
                                     <div className="">
                                         <div className="img" height="500px">

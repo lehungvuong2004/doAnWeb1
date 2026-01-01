@@ -11,11 +11,10 @@ function Card({ item, addToCart }) {
                     alt={item.tensp}
                     src={
                         item.anhsp
-                            ? `http://localhost/DOANWEB/laptrinhweb/src/img/${item.anhsp}`
+                            ? `http://localhost/DOANWEB/laptrinhweb/api/uploads/${item.anhsp}`
                             : null
                     }
                 />
-
                 <div className="card-body">
                     <h5 className="card-title">{item.tensp}</h5>
 
@@ -27,13 +26,6 @@ function Card({ item, addToCart }) {
                     </div>
 
                     <div className="price_cart">
-                        <button
-                            className="btn btn-primary"
-                            onClick={() => addToCart(item, number)}
-                        >
-                            Thêm Vào Giỏ
-                        </button>
-
                         <div className="d-flex align-items-center gap-2">
                             <button
                                 onClick={() =>
@@ -53,6 +45,12 @@ function Card({ item, addToCart }) {
                                 +
                             </button>
                         </div>
+                        <button
+                            className="btn btn-primary mt-2"
+                            onClick={() => addToCart(item, number)}
+                        >
+                            Thêm Vào Giỏ
+                        </button>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,8 @@ function Banner() {
                                 </h3>
                                 <p className="sub__titlet">{item.gioiThieu}</p>
                                 <Link
-                                    to="/food"
+                                    to="/food
+                                    "
                                     className="btn__order text-decoration-none text-dark"
                                 >
                                     Order Now

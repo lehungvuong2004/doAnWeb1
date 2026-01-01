@@ -6,37 +6,37 @@ import "../../App.css";
 import { Link } from "react-router-dom";
 
 const NAV_ITEMS = [
-    { title: "Trang Chủ", path: "/", scroll: true },
+    { title: "Homepage", path: "/", scroll: true },
     {
         title: "Menu",
-        subMenu: [{ title: "Đồ Ăn", path: "/food" }],
+        subMenu: [{ title: "Food", path: "/food" }],
     },
     {
-        title: "Về Chúng Tôi",
+        title: "About Us",
         subMenu: [
-            { title: "Giới Thiệu Nhà Hàng", path: "/about" },
-            { title: "Đầu Bếp", path: "/chef" },
-            { title: "Bí Quyết Nấu Ăn", path: "/recipes" },
+            { title: "About Restaurant", path: "/about" },
+            { title: "Chef", path: "/chef" },
+            { title: "Cooking Tips", path: "/recipes" },
         ],
     },
     {
-        title: "Liên Hệ",
+        title: "Contact",
         subMenu: [
-            { title: "Đặt Bàn Online", path: "/booking" },
-            { title: "Bản Đồ & Chỉ Đường", path: "/map" },
+            // { title: "Order Online", path: "/booking" },
+            { title: "Map & Directions", path: "/map" },
         ],
     },
     {
-        title: "Tin Tức",
-        subMenu: [{ title: "Tin Khuyến Mãi", path: "/sale/tinkhuyenmai" }],
+        title: "News",
+        subMenu: [{ title: "Promotions", path: "/sale/tinkhuyenmai" }],
     },
 ];
 
-export default function Header() {
+export default function Header({ cartCount = 0 }) {
     const [isOpen, setIsOpen] = useState(false);
     const [openSubMenu, setOpenSubMenu] = useState(null);
 
-    // ⭐ Thêm xử lý user
+    // USER LOGIN
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -55,24 +55,25 @@ export default function Header() {
     return (
         <header className="header">
             <div className="container flex__container">
-                {/* logo */}
+                {/* LOGO */}
                 <div className="logo">
                     <Link to="/">
                         <img src={logo} alt="logo" className="logo__img" />
                     </Link>
                 </div>
 
+                {/* TOGGLER */}
                 <button
                     className={`navbar-toggler ${isOpen ? "active" : ""}`}
                     type="button"
                     onClick={toggleMenu}
-                    aria-label="Toggle navigation"
                 >
                     <span className="toggler-icon"></span>
                     <span className="toggler-icon"></span>
                     <span className="toggler-icon"></span>
                 </button>
 
+                {/* MENU */}
                 <nav className={`menu ${isOpen ? "menu--open" : ""}`}>
                     <ul className="menu__list list-unstyled">
                         {NAV_ITEMS.map((item, index) => (
@@ -123,10 +124,21 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                {/* ⭐ GIỎ HÀNG & NGƯỜI DÙNG */}
+                {/* ICONS */}
                 <div className="user">
                     <ul className="list-unstyled flex__container gap-4 user-list">
-                        {/* Giỏ hàng */}
+                        {/* 🔔 BELL */}
+                        <li className="position-relative">
+                            <i className="bi bi-bell fs-5"></i>
+
+                            {cartCount > 0 && (
+                                <span className="badge bg-danger cart-badge">
+                                    {cartCount}
+                                </span>
+                            )}
+                        </li>
+
+                        {/* CART */}
                         <li>
                             <Link to="/cart">
                                 <svg
@@ -148,7 +160,7 @@ export default function Header() {
                             </Link>
                         </li>
 
-                        {/* ICON USER */}
+                        {/* USER */}
                         <li>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -169,12 +181,12 @@ export default function Header() {
                             </svg>
 
                             <ul className="sub-menu icon-login">
-                                {/* ⭐ KIỂM TRA LOGIN */}
                                 {!user ? (
                                     <>
                                         <li>
                                             <Link to="/login">Đăng Nhập</Link>
                                         </li>
+
                                         <li>
                                             <Link to="/register">Đăng Ký</Link>
                                         </li>
@@ -191,6 +203,13 @@ export default function Header() {
                                         <li>
                                             <Link to="/cart">
                                                 Lịch Sử Đặt Bàn
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/change-password">
+                                                {" "}
+                                                {/* Sửa thành đường dẫn mới */}
+                                                Thay Đổi Mật Khẩu{" "}
                                             </Link>
                                         </li>
                                         <li>

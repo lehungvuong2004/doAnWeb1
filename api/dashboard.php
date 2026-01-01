@@ -25,7 +25,7 @@
     }
 
     $table = $_GET['table'] ?? 'nhanvien';
-    $allowedTables = ['nhanvien', 'khachhang', 'monan', 'ban', 'taikhoan'];
+   $allowedTables = ['nhanvien', 'khachhang', 'monan', 'ban', 'taikhoan', 'sanphamall'];
     if (!in_array($table, $allowedTables)) $table = 'nhanvien';
 
     $action = $_POST['action'] ?? '';
@@ -51,25 +51,62 @@
         }
         return '';
     }
-    function mapTable($table)
-    {
-        $map = [
-            'nhanvien' => ['db' => 'NhanVien', 'id' => 'maNhanVien'],
-            'khachhang' => ['db' => 'KhachHang', 'id' => 'maKhachHang'],
-            'monan' => ['db' => 'sanpham', 'id' => 'maMonAn'], // map monan to sanpham table
-            'ban' => ['db' => 'Ban', 'id' => 'maBan'],
-            'taikhoan' => ['db' => 'TaiKhoan', 'id' => 'maTaiKhoan'],
-        ];
-        return $map[$table];
-    }
-
-    $fieldsMap = [
-        'nhanvien' => ['tenNhanVien' => 'Tên Nhân Viên', 'ngayVaoLam' => 'Ngày Vào Làm', 'soDienThoai' => 'Số Điện Thoại', 'tienLuong' => 'Tiền Lương', 'ChucVu' => 'Chức Vụ'],
-        'khachhang' => ['tenKhachHang' => 'Tên Khách Hàng', 'soDienThoai' => 'Số Điện Thoại', 'email' => 'Email', 'diaChi' => 'Địa Chỉ'],
-        'monan' => ['tenMonAn' => 'Tên Món Ăn', 'gioithieu' => 'Giới Thiệu', 'anhMonAn' => 'Ảnh Món Ăn', 'giaMonAn' => 'Giá Món Ăn', 'giaGiam' => 'Giá Giảm', 'kichThuoc' => 'Kích Thước', 'ghiChu' => 'Ghi Chú', 'trangThai' => 'Trạng Thái'], // added all sanpham columns
-        'ban' => ['ngayDatBan' => 'Ngày Đặt Bàn', 'soNguoi' => 'Số Người', 'viTri' => 'Vị Trí', 'trangThai' => 'Trạng Thái'],
-        'taikhoan' => ['tenNguoiDung' => 'Tên Người Dùng', 'tenDangNhap' => 'Tên Đăng Nhập', 'matKhau' => 'Mật Khẩu', 'email' => 'Email'],
+   function mapTable($table)
+{
+    $map = [
+        'nhanvien'   => ['db' => 'NhanVien',   'id' => 'maNhanVien'],
+        'khachhang' => ['db' => 'KhachHang',  'id' => 'maKhachHang'],
+        'monan'     => ['db' => 'sanpham',    'id' => 'maMonAn'],
+        'ban'       => ['db' => 'Ban',        'id' => 'maBan'],
+        'taikhoan'  => ['db' => 'TaiKhoan',   'id' => 'maTaiKhoan'],
+        'sanphamall'=> ['db' => 'sanphamall','id' => 'masp'],   // ✅ THÊM
     ];
+    return $map[$table];
+}
+
+ $fieldsMap = [
+    'nhanvien' => [
+        'tenNhanVien' => 'Tên Nhân Viên',
+        'ngayVaoLam'  => 'Ngày Vào Làm',
+        'soDienThoai' => 'Số Điện Thoại',
+        'tienLuong'   => 'Tiền Lương',
+        'ChucVu'      => 'Chức Vụ'
+    ],
+    'khachhang' => [
+        'tenKhachHang' => 'Tên Khách Hàng',
+        'soDienThoai'  => 'Số Điện Thoại',
+        'email'        => 'Email',
+        'diaChi'       => 'Địa Chỉ'
+    ],
+    'monan' => [
+        'tenMonAn'  => 'Tên Món Ăn',
+        'gioiThieu' => 'Giới Thiệu',
+        'anhMonAn'  => 'Ảnh',
+        'giaMonAn'  => 'Giá',
+        'giaGiam'   => 'Giảm Giá'
+    ],
+    'ban' => [
+        'ngayDatBan' => 'Ngày Đặt',
+        'soNguoi'    => 'Số Người',
+        'viTri'      => 'Vị Trí',
+        'trangThai'  => 'Trạng Thái'
+    ],
+    'taikhoan' => [
+        'tenNguoiDung' => 'Tên Người Dùng',
+        'tenDangNhap'  => 'Tên Đăng Nhập',
+        'matKhau'      => 'Mật Khẩu',
+        'email'        => 'Email'
+    ],
+    'sanphamall' => [                   // ✅ THÊM
+        'tensp'         => 'Tên Sản Phẩm',
+        'giasp'         => 'Giá',
+        'anhsp'         => 'Ảnh',
+        'giakhuyenmai' => 'Giá Khuyến Mãi',
+        'soluong'       => 'Số Lượng',
+        'loaisp'        => 'Loại Sản Phẩm'
+    ]
+];
+
 
 
 
@@ -143,6 +180,18 @@
                 $stmt->execute([$tenND, $tenDN, $hash, $email]);
                 $_SESSION['flash'] = 'Thêm tài khoản thành công.';
             }
+            elseif ($table === 'sanphamall') {
+            // XỬ LÝ THÊM SANPHAMALL
+            $tensp = $_POST['tensp'] ?? '';
+            $giasp = $_POST['giasp'] ?? 0;
+            $giakhuyenmai = $_POST['giakhuyenmai'] ?? 0;
+            $soluong = $_POST['soluong'] ?? 0;
+            $loaisp = $_POST['loaisp'] ?? '';
+            $fileName = uploadImage('anhsp');
+            $stmt = $pdo->prepare("INSERT INTO {$dbTable} (tensp, giasp, anhsp, giakhuyenmai, soluong, loaisp) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$tensp, $giasp, $fileName, $giakhuyenmai, $soluong, $loaisp]);
+            $_SESSION['flash'] = 'Thêm sản phẩm thành công.';
+        }
 
             header('Location: ?table=' . $table);
             exit;
@@ -229,6 +278,35 @@
                 }
                 $_SESSION['flash'] = 'Cập nhật tài khoản thành công.';
             }
+            elseif ($table === 'sanphamall') {
+            // XỬ LÝ CẬP NHẬT SANPHAMALL
+            $tensp = $_POST['tensp'] ?? '';
+            $giasp = $_POST['giasp'] ?? 0;
+            $giakhuyenmai = $_POST['giakhuyenmai'] ?? 0;
+            $soluong = $_POST['soluong'] ?? 0;
+            $loaisp = $_POST['loaisp'] ?? '';
+
+            $fileName = uploadImage('anhsp');
+
+            if ($fileName !== '') {
+                // xóa ảnh cũ nếu có
+                $old = $pdo->prepare("SELECT anhsp FROM {$dbTable} WHERE {$idField} = ?");
+                $old->execute([$id]);
+                $rowOld = $old->fetch();
+                if ($rowOld && !empty($rowOld['anhsp'])) {
+                    $oldPath = __DIR__ . '/uploads/' . $rowOld['anhsp'];
+                    if (is_file($oldPath)) @unlink($oldPath);
+                }
+
+                $stmt = $pdo->prepare("UPDATE {$dbTable} SET tensp=?, giasp=?, anhsp=?, giakhuyenmai=?, soluong=?, loaisp=? WHERE {$idField}=?");
+                $stmt->execute([$tensp, $giasp, $fileName, $giakhuyenmai, $soluong, $loaisp, $id]);
+            } else {
+                $stmt = $pdo->prepare("UPDATE {$dbTable} SET tensp=?, giasp=?, giakhuyenmai=?, soluong=?, loaisp=? WHERE {$idField}=?");
+                $stmt->execute([$tensp, $giasp, $giakhuyenmai, $soluong, $loaisp, $id]);
+            }
+
+            $_SESSION['flash'] = 'Cập nhật sản phẩm thành công.';
+        }
 
             header('Location: ?table=' . $table);
             exit;
@@ -255,18 +333,12 @@
             header('Location: ?table=' . $table);
             exit;
         }
+        
     }
 
     $stmt = $pdo->query("SELECT * FROM {$dbTable} ORDER BY {$idField} DESC");
     $currentData = $stmt->fetchAll();
 
-    $fieldsMap = [
-        'nhanvien' => ['tenNhanVien' => 'Tên Nhân Viên', 'ngayVaoLam' => 'Ngày Vào Làm', 'soDienThoai' => 'Số Điện Thoại', 'tienLuong' => 'Tiền Lương', 'ChucVu' => 'Chức Vụ'],
-        'khachhang' => ['tenKhachHang' => 'Tên Khách Hàng', 'soDienThoai' => 'Số Điện Thoại', 'email' => 'Email', 'diaChi' => 'Địa Chỉ'],
-        'monan' => ['tenMonAn' => 'Tên Món Ăn', 'gioiThieu' => 'Giới Thiệu', 'anhMonAn' => 'Ảnh Món Ăn', 'giaMonAn' => 'Giá Món Ăn', 'giaGiam' => 'Giá Giảm'],
-        'ban' => ['ngayDatBan' => 'Ngày Đặt Bàn', 'soNguoi' => 'Số Người', 'viTri' => 'Vị Trí', 'trangThai' => 'Trạng Thái'],
-        'taikhoan' => ['tenNguoiDung' => 'Tên Người Dùng', 'tenDangNhap' => 'Tên Đăng Nhập', 'matKhau' => 'Mật Khẩu', 'email' => 'Email'],
-    ];
 
     ?>
 
@@ -459,13 +531,19 @@
         const idField = <?= json_encode($idField) ?>;
 
         function makeFieldHTML(name, label, value = '') {
-            if (name === 'anhMonAn') {
-                return `<div class="mb-3"><label class="form-label">${label}</label><input type="file" class="form-control" name="${name}" accept="image/*">${value ? `<div class="mt-2"><img src="uploads/${value}" style="width:120px"></div>` : ''}</div>`;
+            if (name === 'anhMonAn' || name === 'anhsp') {
+                return `
+        <div class="mb-3">
+            <label class="form-label">${label}</label>
+            <input type="file" class="form-control" name="${name}" accept="image/*">
+            ${value ? `<div class="mt-2"><img src="uploads/${value}" style="width:120px"></div>` : ''}
+        </div>`;
             }
+
 
             let type = 'text';
             if (name === 'giaMonAn' || name === 'giaGiam' || name === 'tienLuong' || name === 'soNguoi') type =
-            'number';
+                'number';
             if (name === 'ngayVaoLam' || name === 'ngayDatBan') type = 'date';
             if (name === 'matKhau') type = 'password';
             if (name === 'trangThai') {

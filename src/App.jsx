@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-// ... (Giữ nguyên các import component của bạn)
 import LoginForm from "./componemt/login/LoginForm.jsx";
 import { Forget } from "./componemt/quenmatkhau/Forget.jsx";
 import Banner from "./componemt/banner/Banner.jsx";
@@ -10,6 +8,7 @@ import NhanVien from "./componemt/nhanvien/NhanVien.jsx";
 import MainLayout from "./mainlayout/MainLayOut.jsx";
 import TinKhuyenMai from "./componemt/header/TinKhuyenMai.jsx";
 import DauBepHeader from "./componemt/header/DauBepHeader.jsx";
+import ChangePassword from "./componemt/header/ChangePassword";
 import LienHeChiDuong from "./componemt/header/LienHeChiDuong.jsx";
 import BiQuyetNauAn from "./componemt/header/BiQuyetNauAn.jsx";
 import GioiThieuNhaHang from "./componemt/header/GioiThieuNhaHang.jsx";
@@ -18,8 +17,6 @@ import Logout from "./componemt/login/Logout.jsx";
 import Cart from "./componemt/cart/Cart.jsx";
 
 function App() {
-    // ------------------ GIỎ HÀNG TỔNG ------------------
-
     // 👉 SỬA LỖI: Kiểm tra URL ngay khi khởi tạo State
     const [cart, setCart] = useState(() => {
         // 1. Kiểm tra xem có phải vừa thanh toán thành công về không
@@ -96,21 +93,30 @@ function App() {
             )
         );
     };
-
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     return (
         <>
             <Routes>
                 {/* Giữ nguyên toàn bộ Routes của bạn */}
-                <Route path="/" element={<MainLayout />} />
+                <Route
+                    path="/"
+                    element={<MainLayout cartCount={cartCount} />}
+                />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/sale/tinkhuyenmai" element={<TinKhuyenMai />} />
                 <Route path="/map" element={<LienHeChiDuong />} />
                 <Route path="/recipes" element={<BiQuyetNauAn />} />
+                <Route path="/change-password" element={<ChangePassword />} />
                 <Route path="/chef" element={<DauBepHeader />} />
                 <Route path="/about" element={<GioiThieuNhaHang />} />
                 <Route path="/forget" element={<Forget />} />
-                <Route path="/food" element={<DoAn addToCart={addToCart} />} />
+                <Route
+                    path="/food"
+                    element={
+                        <DoAn addToCart={addToCart} cartCount={cartCount} />
+                    }
+                />
                 <Route
                     path="/cart"
                     element={

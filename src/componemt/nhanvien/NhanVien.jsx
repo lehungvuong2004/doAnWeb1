@@ -11,10 +11,15 @@ import img3 from "../../img/vuabanhmi.jpg";
 import img4 from "../../img/phobep.jpg";
 
 const staff = [
-    { id: 0, img: img0, name: "Nguyễn Thành Trung", chucvu: "Trưởng Bếp" },
-    { id: 1, img: img1, name: "Alain Ducasse", chucvu: "Bưng Ly" },
-    { id: 2, img: img2, name: "Quang Vinh", chucvu: "Rửa Bếp" },
-    { id: 3, img: img3, name: "Kao Siêu Lực", chucvu: "Chuyên Gia Bánh Mì" },
+    {
+        id: 0,
+        img: img0,
+        name: "Nguyễn Thành Trung",
+        chucvu: "Senior Culinary Advisor",
+    },
+    { id: 1, img: img1, name: "Alain Ducasse", chucvu: "F&B Manager" },
+    { id: 2, img: img2, name: "Quang Vinh", chucvu: "Kitchen Assistant" },
+    { id: 3, img: img3, name: "Kao Siêu Lực", chucvu: "Master Baker" },
     {
         id: 4,
         img: img4,

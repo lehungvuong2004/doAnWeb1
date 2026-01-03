@@ -6,7 +6,6 @@ function ProductReviews({ productId }) {
     const [soSao, setSoSao] = useState(5);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // 1. Lấy danh sách đánh giá
     const fetchReviews = () => {
         fetch(
             `http://localhost/DOANWEB/laptrinhweb/api/get_reviews.php?masp=${productId}`
@@ -22,7 +21,6 @@ function ProductReviews({ productId }) {
         if (productId) fetchReviews();
     }, [productId]);
 
-    // 2. Hàm gửi đánh giá
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!noiDung.trim()) return alert("Vui lòng nhập nội dung!");
@@ -32,7 +30,7 @@ function ProductReviews({ productId }) {
             masp: productId,
             soSao: parseInt(soSao),
             noiDung: noiDung,
-            maTaiKhoan: null, // Sau này lấy từ context/localStorage nếu có login
+            maTaiKhoan: null, 
         };
 
         try {
@@ -61,16 +59,14 @@ function ProductReviews({ productId }) {
         }
     };
 
-    // 3. Hàm hiển thị sao đẹp mắt
-    const renderStars = (rating) => {
-        return "⭐".repeat(rating);
-    };
+    // // 3. Hàm hiển thị sao đẹp mắt
+    // const renderStars = (rating) => {
+    //     return "⭐".repeat(rating);
+    // };
 
     return (
         <div className="mt-5 p-3 border rounded bg-light">
             <h4 className="mb-4">Khách hàng đánh giá</h4>
-
-            {/* Form nhập */}
             <form
                 onSubmit={handleSubmit}
                 className="mb-5 shadow-sm p-3 bg-white rounded"
@@ -98,7 +94,7 @@ function ProductReviews({ productId }) {
 
                 <button
                     type="submit"
-                    className="btn btn-warning w-100 fw-bold"
+                    className="btn btn-success w-100 fw-bold"
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Đang gửi..." : "GỬI ĐÁNH GIÁ"}

@@ -132,13 +132,13 @@ function LienHeChiDuong() {
                                     <div className="d-grid gap-2 pt-3">
                                         <a
                                             href="tel:0123456789"
-                                            className="btn btn-warning btn-lg fw-bold"
+                                            className="btn btn-danger fw-bold"
                                         >
                                             Gọi Ngay
                                         </a>
                                         <a
                                             href="mailto:info@nha-hang.com"
-                                            className="btn btn-outline-warning btn-lg fw-bold"
+                                            className="btn btn-success  fw-bold"
                                         >
                                             ✉️ Gửi Email
                                         </a>

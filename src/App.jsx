@@ -15,6 +15,7 @@ import GioiThieuNhaHang from "./componemt/header/GioiThieuNhaHang.jsx";
 import DoAn from "./componemt/header/DoAn.jsx";
 import Logout from "./componemt/login/Logout.jsx";
 import Cart from "./componemt/cart/Cart.jsx";
+import ProductDetail from "./componemt/header/ProductDetail.jsx";
 
 function App() {
     // 👉 SỬA LỖI: Kiểm tra URL ngay khi khởi tạo State
@@ -116,6 +117,11 @@ function App() {
                     element={
                         <DoAn addToCart={addToCart} cartCount={cartCount} />
                     }
+                />
+                {/* ⭐ TRANG CHI TIẾT SẢN PHẨM */}
+                <Route
+                    path="/food/:id"
+                    element={<ProductDetail addToCart={addToCart} />}
                 />
                 <Route
                     path="/cart"

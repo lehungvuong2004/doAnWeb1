@@ -6,7 +6,8 @@ import "../../App.css";
 
 const ChangePassword = () => {
     const navigate = useNavigate();
-
+    const [message, setMessage] = useState({ type: "", content: "" });
+    const [loading, setLoading] = useState(false);
     // State lưu dữ liệu form
     const [formData, setFormData] = useState({
         currentPassword: "",
@@ -14,28 +15,22 @@ const ChangePassword = () => {
         confirmPassword: "",
     });
 
-    const [message, setMessage] = useState({ type: "", content: "" });
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         const userString = localStorage.getItem("user");
         if (!userString) {
             navigate("/login");
         }
     }, [navigate]);
-
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
-
     // Xử lý Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage({ type: "", content: "" });
-
         if (formData.newPassword !== formData.confirmPassword) {
             setMessage({
                 type: "error",
@@ -43,7 +38,6 @@ const ChangePassword = () => {
             });
             return;
         }
-
         if (formData.newPassword.length < 6) {
             setMessage({
                 type: "error",
@@ -51,22 +45,15 @@ const ChangePassword = () => {
             });
             return;
         }
-
         setLoading(true);
-
         try {
             const userString = localStorage.getItem("user");
             if (!userString) {
                 navigate("/login");
                 return;
             }
-
             const user = JSON.parse(userString);
-
             const userId = user.maTaiKhoan;
-
-            // console.log("User Data:", user);
-            // console.log("ID lấy được:", userId);
 
             if (!userId) {
                 setMessage({
@@ -87,7 +74,7 @@ const ChangePassword = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    userId: userId, // Gửi maTaiKhoan lên server
+                    userId: userId,
                     current_password: formData.currentPassword,
                     new_password: formData.newPassword,
                 }),
@@ -133,7 +120,7 @@ const ChangePassword = () => {
         >
             <div className="card shadow">
                 <div className="card-header bg-primary text-white">
-                    <h4 className="mb-0">Thay Đổi Mật Khẩu</h4>
+                    <h4 className="mb-0 text-center">Thay Đổi Mật Khẩu</h4>
                 </div>
                 <div className="card-body">
                     {/* Hiển thị thông báo */}
